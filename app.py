@@ -25,9 +25,9 @@ def load_artifacts():
     with open("New_Scalar.pkl", "rb") as f:
         scaler = pickle.load(f)
 
-    return model, scaler
+    return model, scalar
 
-model, scaler = load_artifacts()
+model, scalar = load_artifacts()
 
 # ----------------------------------
 # Feature inputs
@@ -57,7 +57,7 @@ if st.button("Predict Wine Quality"):
     input_array = np.array(input_values).reshape(1, -1)
 
     # Scale input
-    scaled_input = scaler.transform(input_array)
+    scaled_input = scalar.transform(input_array)
 
     # Predict
     prediction = model.predict(scaled_input)
