@@ -111,4 +111,3 @@ if st.button("🍷 Predict Wine Quality"):
 
     except Exception as e:
         st.error(f"❌ Prediction error: {e}")
-```
