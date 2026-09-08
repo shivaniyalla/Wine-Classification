@@ -436,7 +436,7 @@ with col3:
 
 st.markdown("""
 <div class="footer">
-    🍷 Wine Quality AI &nbsp;·&nbsp; Powered by Machine Learning
+     Wine Quality AI &nbsp;·&nbsp; Powered by Machine Learning
 </div>
 """, unsafe_allow_html=True)
 
