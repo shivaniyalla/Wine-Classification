@@ -763,7 +763,7 @@ def load_artifacts():
 
     scaler_path = os.path.join(
         base_dir,
-        "New_Scalar.pkl"
+        "New_scalar.pkl"
     )
 
     # Check model
@@ -810,7 +810,7 @@ except FileNotFoundError as error:
     st.code(
         "app.py\n"
         "New_RFmodel.pkl\n"
-        "New_Scalar.pkl"
+        "New_scalar.pkl"
     )
 
     st.stop()
