@@ -172,24 +172,66 @@ st.markdown("""
 # HERO
 # ============================================================
 
-st.markdown("""
-<div class="hero">
+st.markdown("")
 
-    <div class="hero-badge">
-        ✦ AI POWERED WINE ANALYSIS
+st.markdown(
+    """
+    <div style="
+        text-align:center;
+        padding:45px 20px 35px 20px;
+    ">
+
+        <div style="
+            display:inline-block;
+            padding:8px 18px;
+            border-radius:30px;
+            background:rgba(130,35,60,0.18);
+            border:1px solid rgba(180,70,95,0.35);
+            color:#e9a7b8;
+            font-size:13px;
+            font-weight:600;
+            letter-spacing:1.5px;
+        ">
+            ✦ AI POWERED WINE ANALYSIS
+        </div>
+
     </div>
+    """,
+    unsafe_allow_html=True
+)
 
-    <h1 class="hero-title">
+st.markdown(
+    """
+    <h1 style="
+        text-align:center;
+        font-size:58px;
+        line-height:1.05;
+        margin:0;
+        font-weight:800;
+    ">
         Wine Quality<br>Prediction
     </h1>
+    """,
+    unsafe_allow_html=True
+)
 
-    <p class="hero-subtitle">
+st.markdown(
+    """
+    <p style="
+        text-align:center;
+        max-width:650px;
+        margin:20px auto 40px auto;
+        color:#b9aeb2;
+        font-size:17px;
+        line-height:1.6;
+    ">
         Discover the predicted quality of your wine using
         machine learning and its chemical properties.
     </p>
+    """,
+    unsafe_allow_html=True
+)
 
-</div>
-""", unsafe_allow_html=True)
 
 # ============================================================
 # LOAD MODEL AND SCALER
