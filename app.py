@@ -1,3 +1,4 @@
+```python
 import streamlit as st
 import numpy as np
 import pickle
@@ -6,6 +7,7 @@ import os
 # ============================================================
 # PAGE CONFIG
 # ============================================================
+
 st.set_page_config(
     page_title="Wine Quality AI",
     page_icon="🍷",
@@ -13,23 +15,16 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-
 # ============================================================
 # PREMIUM WINE THEME
 # ============================================================
+
 st.markdown(
     """
     <style>
 
-    /* ========================================================
-       IMPORT FONT
-       ======================================================== */
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
-
-    /* ========================================================
-       GLOBAL
-       ======================================================== */
     * {
         box-sizing: border-box;
     }
@@ -61,10 +56,6 @@ st.markdown(
         color: white;
     }
 
-
-    /* ========================================================
-       REMOVE STREAMLIT DEFAULT UI
-       ======================================================== */
     #MainMenu {
         visibility: hidden;
     }
@@ -81,10 +72,6 @@ st.markdown(
         background: transparent;
     }
 
-
-    /* ========================================================
-       BACKGROUND WINE GLOW
-       ======================================================== */
     .wine-glow {
         position: fixed;
         width: 550px;
@@ -108,7 +95,6 @@ st.markdown(
         z-index: 0;
     }
 
-
     .wine-glow-bottom {
         position: fixed;
         width: 500px;
@@ -131,33 +117,23 @@ st.markdown(
         z-index: 0;
     }
 
-
-    /* ========================================================
-       WINE GLASS BACKGROUND
-       ======================================================== */
     .wine-scene {
         position: fixed;
-
         right: 7%;
         top: 12%;
-
         width: 360px;
         height: 620px;
 
         opacity: 0.17;
 
         pointer-events: none;
-
         z-index: 0;
 
         transform: rotate(-2deg);
     }
 
-
-    /* Glass bowl */
     .glass-bowl {
         position: absolute;
-
         left: 55px;
         top: 70px;
 
@@ -165,7 +141,6 @@ st.markdown(
         height: 320px;
 
         border: 3px solid rgba(255,255,255,0.45);
-
         border-top: none;
 
         border-radius:
@@ -183,11 +158,8 @@ st.markdown(
         backdrop-filter: blur(2px);
     }
 
-
-    /* Glass rim */
     .glass-rim {
         position: absolute;
-
         left: 55px;
         top: 62px;
 
@@ -200,11 +172,8 @@ st.markdown(
         border-radius: 50%;
     }
 
-
-    /* Glass stem */
     .glass-stem {
         position: absolute;
-
         left: 176px;
         top: 388px;
 
@@ -220,11 +189,8 @@ st.markdown(
             );
     }
 
-
-    /* Glass base */
     .glass-base {
         position: absolute;
-
         left: 105px;
         top: 525px;
 
@@ -237,13 +203,8 @@ st.markdown(
         border-radius: 50%;
     }
 
-
-    /* ========================================================
-       WINE INSIDE GLASS
-       ======================================================== */
     .wine-liquid {
         position: absolute;
-
         left: 68px;
         top: 245px;
 
@@ -268,11 +229,8 @@ st.markdown(
         animation: wineRise 4s ease-in-out infinite;
     }
 
-
-    /* Wine surface */
     .wine-surface {
         position: absolute;
-
         left: 68px;
         top: 237px;
 
@@ -291,13 +249,8 @@ st.markdown(
         animation: wineWave 3s ease-in-out infinite;
     }
 
-
-    /* ========================================================
-       POURING WINE
-       ======================================================== */
     .wine-stream {
         position: absolute;
-
         left: 173px;
         top: -5px;
 
@@ -315,15 +268,11 @@ st.markdown(
         border-radius: 20px;
 
         transform-origin: bottom;
-
         animation: pourWine 2.2s ease-in-out infinite;
     }
 
-
-    /* Wine bottle */
     .wine-bottle {
         position: absolute;
-
         left: 120px;
         top: -45px;
 
@@ -343,10 +292,8 @@ st.markdown(
         transform: rotate(22deg);
     }
 
-
     .wine-bottle-neck {
         position: absolute;
-
         left: 32px;
         top: -60px;
 
@@ -364,10 +311,6 @@ st.markdown(
         border-radius: 12px 12px 5px 5px;
     }
 
-
-    /* ========================================================
-       ANIMATIONS
-       ======================================================== */
     @keyframes pourWine {
 
         0%, 100% {
@@ -381,7 +324,6 @@ st.markdown(
         }
     }
 
-
     @keyframes wineRise {
 
         0%, 100% {
@@ -392,7 +334,6 @@ st.markdown(
             height: 135px;
         }
     }
-
 
     @keyframes wineWave {
 
@@ -405,17 +346,11 @@ st.markdown(
         }
     }
 
-
-    /* ========================================================
-       MAIN CONTENT
-       ======================================================== */
     .main-container {
         position: relative;
-
         z-index: 2;
 
         max-width: 1100px;
-
         margin: auto;
 
         padding:
@@ -425,16 +360,10 @@ st.markdown(
             30px;
     }
 
-
-    /* ========================================================
-       HERO
-       ======================================================== */
     .hero {
         text-align: center;
-
         margin-bottom: 45px;
     }
-
 
     .hero-badge {
         display: inline-block;
@@ -454,16 +383,13 @@ st.markdown(
         color: #e7b6c8;
 
         font-size: 13px;
-
         font-weight: 600;
 
         letter-spacing: 1.4px;
-
         text-transform: uppercase;
 
         margin-bottom: 20px;
     }
-
 
     .hero-title {
         font-family:
@@ -473,7 +399,6 @@ st.markdown(
         font-size: clamp(42px, 6vw, 70px);
 
         line-height: 1.05;
-
         margin: 0;
 
         background:
@@ -485,10 +410,8 @@ st.markdown(
             );
 
         -webkit-background-clip: text;
-
         -webkit-text-fill-color: transparent;
     }
-
 
     .hero-subtitle {
         margin-top: 18px;
@@ -506,10 +429,6 @@ st.markdown(
         line-height: 1.7;
     }
 
-
-    /* ========================================================
-       GLASS CARD
-       ======================================================== */
     .glass-card {
         background:
             linear-gradient(
@@ -540,22 +459,16 @@ st.markdown(
         margin-bottom: 25px;
     }
 
-
-    /* ========================================================
-       SECTION TITLE
-       ======================================================== */
     .section-title {
         font-family:
             'Playfair Display',
             serif;
 
         font-size: 25px;
-
         color: white;
 
         margin-bottom: 6px;
     }
-
 
     .section-description {
         color:
@@ -566,23 +479,15 @@ st.markdown(
         margin-bottom: 28px;
     }
 
-
-    /* ========================================================
-       STREAMLIT INPUTS
-       ======================================================== */
     div[data-testid="stNumberInput"] label {
-
         color:
             rgba(255,255,255,0.72) !important;
 
         font-size: 13px !important;
-
         font-weight: 500 !important;
     }
 
-
     div[data-testid="stNumberInput"] input {
-
         background:
             rgba(255,255,255,0.065) !important;
 
@@ -594,13 +499,9 @@ st.markdown(
         border-radius: 12px !important;
 
         height: 45px !important;
-
-        transition: all 0.25s ease;
     }
 
-
     div[data-testid="stNumberInput"] input:focus {
-
         border-color:
             rgba(176,57,105,0.8) !important;
 
@@ -608,18 +509,11 @@ st.markdown(
             0 0 0 2px rgba(176,57,105,0.15) !important;
     }
 
-
-    /* ========================================================
-       PREDICT BUTTON
-       ======================================================== */
     div.stButton > button {
-
         width: 100%;
-
         height: 54px;
 
         border: none;
-
         border-radius: 15px;
 
         background:
@@ -632,7 +526,6 @@ st.markdown(
         color: white;
 
         font-size: 15px;
-
         font-weight: 700;
 
         letter-spacing: 0.3px;
@@ -645,29 +538,14 @@ st.markdown(
             box-shadow 0.2s ease;
     }
 
-
     div.stButton > button:hover {
-
-        transform:
-            translateY(-2px);
+        transform: translateY(-2px);
 
         box-shadow:
             0 18px 40px rgba(128,18,63,0.45);
     }
 
-
-    div.stButton > button:active {
-
-        transform:
-            translateY(0);
-    }
-
-
-    /* ========================================================
-       RESULT CARD
-       ======================================================== */
     .result-card {
-
         margin-top: 28px;
 
         padding: 30px;
@@ -686,37 +564,30 @@ st.markdown(
 
         text-align: center;
 
-        backdrop-filter:
-            blur(20px);
+        backdrop-filter: blur(20px);
 
         box-shadow:
             0 20px 60px rgba(80,5,35,0.25);
     }
 
-
     .result-label {
-
         color:
             rgba(255,255,255,0.55);
 
         font-size: 12px;
 
         text-transform: uppercase;
-
         letter-spacing: 2px;
 
         margin-bottom: 8px;
     }
 
-
     .result-value {
-
         font-family:
             'Playfair Display',
             serif;
 
         font-size: 52px;
-
         font-weight: 700;
 
         color: #f0c6d7;
@@ -724,20 +595,12 @@ st.markdown(
         line-height: 1;
     }
 
-
     .result-icon {
-
         font-size: 35px;
-
         margin-bottom: 10px;
     }
 
-
-    /* ========================================================
-       INFO CARDS
-       ======================================================== */
     .info-row {
-
         display: grid;
 
         grid-template-columns:
@@ -748,9 +611,7 @@ st.markdown(
         margin-top: 25px;
     }
 
-
     .info-card {
-
         padding: 20px;
 
         border-radius: 18px;
@@ -764,41 +625,26 @@ st.markdown(
         text-align: center;
     }
 
-
     .info-icon {
-
         font-size: 24px;
-
         margin-bottom: 8px;
     }
 
-
     .info-title {
-
         font-weight: 700;
-
         color: white;
-
         font-size: 14px;
     }
 
-
     .info-text {
-
         color:
             rgba(255,255,255,0.45);
 
         font-size: 12px;
-
         margin-top: 5px;
     }
 
-
-    /* ========================================================
-       FOOTER
-       ======================================================== */
     .footer {
-
         text-align: center;
 
         color:
@@ -811,10 +657,6 @@ st.markdown(
         letter-spacing: 0.3px;
     }
 
-
-    /* ========================================================
-       MOBILE
-       ======================================================== */
     @media (max-width: 768px) {
 
         .main-container {
@@ -848,13 +690,9 @@ st.markdown(
 
     </style>
 
-
-    <!-- Decorative background -->
     <div class="wine-glow"></div>
     <div class="wine-glow-bottom"></div>
 
-
-    <!-- Wine pouring background -->
     <div class="wine-scene">
 
         <div class="wine-bottle">
@@ -864,15 +702,12 @@ st.markdown(
         <div class="wine-stream"></div>
 
         <div class="glass-rim"></div>
-
         <div class="glass-bowl"></div>
 
         <div class="wine-surface"></div>
-
         <div class="wine-liquid"></div>
 
         <div class="glass-stem"></div>
-
         <div class="glass-base"></div>
 
     </div>
@@ -880,10 +715,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# ============================================================
+# HERO
+# ============================================================
 
-# ============================================================
-# MAIN CONTAINER
-# ============================================================
 st.markdown(
     """
     <div class="main-container">
@@ -912,19 +747,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
 # ============================================================
 # LOAD MODEL AND SCALER
 # ============================================================
+
 @st.cache_resource
 def load_artifacts():
 
-    # Get folder where app.py is located
-    base_dir = os.path.dirname(
-        os.path.abspath(__file__)
-    )
+    # Folder containing app.py
+    base_dir = os.path.dirname(os.path.abspath(__file__))
 
-    # Model and scaler paths
     model_path = os.path.join(
         base_dir,
         "New_RFmodel.pkl"
@@ -932,46 +764,28 @@ def load_artifacts():
 
     scaler_path = os.path.join(
         base_dir,
-        "New_scalar.pkl"
+        "New_Scalar.pkl"
     )
 
-    # --------------------------------------------------------
     # Check model
-    # --------------------------------------------------------
-    if not os.path.exists(model_path):
-
+    if not os.path.isfile(model_path):
         raise FileNotFoundError(
-            f"Model file not found: {model_path}"
+            f"Model file not found:\n{model_path}"
         )
 
-    # --------------------------------------------------------
     # Check scaler
-    # --------------------------------------------------------
-    if not os.path.exists(scaler_path):
-
+    if not os.path.isfile(scaler_path):
         raise FileNotFoundError(
-            f"Scaler file not found: {scaler_path}"
+            f"Scaler file not found:\n{scaler_path}"
         )
 
-    # --------------------------------------------------------
     # Load model
-    # --------------------------------------------------------
-    with open(
-        model_path,
-        "rb"
-    ) as f:
+    with open(model_path, "rb") as file:
+        model = pickle.load(file)
 
-        model = pickle.load(f)
-
-    # --------------------------------------------------------
     # Load scaler
-    # --------------------------------------------------------
-    with open(
-        scaler_path,
-        "rb"
-    ) as f:
-
-        scaler = pickle.load(f)
+    with open(scaler_path, "rb") as file:
+        scaler = pickle.load(file)
 
     return model, scaler
 
@@ -979,32 +793,34 @@ def load_artifacts():
 # ============================================================
 # LOAD ARTIFACTS SAFELY
 # ============================================================
+
 try:
 
     model, scaler = load_artifacts()
 
-except FileNotFoundError as e:
+except FileNotFoundError as error:
 
-    st.error(
-        "❌ Required model file is missing."
-    )
+    st.error("❌ Required model/scaler file is missing.")
 
-    st.code(str(e))
+    st.code(str(error))
 
     st.info(
-        "Make sure New_RFmodel.pkl and New_scalar.pkl "
-        "are uploaded to the same GitHub folder as app.py."
+        "Make sure these three files are in the same GitHub folder:"
+    )
+
+    st.code(
+        "app.py\n"
+        "New_RFmodel.pkl\n"
+        "New_Scalar.pkl"
     )
 
     st.stop()
 
-except Exception as e:
+except Exception as error:
 
-    st.error(
-        "❌ Error loading model or scaler."
-    )
+    st.error("❌ Unable to load the machine-learning model.")
 
-    st.code(str(e))
+    st.code(str(error))
 
     st.stop()
 
@@ -1012,6 +828,7 @@ except Exception as e:
 # ============================================================
 # INPUT SECTION
 # ============================================================
+
 st.markdown(
     """
     <div class="main-container">
@@ -1032,12 +849,11 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
 # ============================================================
 # INPUTS
 # ============================================================
-col1, col2 = st.columns(2, gap="large")
 
+col1, col2 = st.columns(2, gap="large")
 
 with col1:
 
@@ -1051,14 +867,14 @@ with col1:
     volatile_acidity = st.number_input(
         "Volatile Acidity",
         min_value=0.0,
-        value=0.7,
+        value=0.70,
         step=0.01
     )
 
     citric_acid = st.number_input(
         "Citric Acid",
         min_value=0.0,
-        value=0.0,
+        value=0.00,
         step=0.01
     )
 
@@ -1083,7 +899,6 @@ with col1:
         value=11.0,
         step=1.0
     )
-
 
 with col2:
 
@@ -1123,25 +938,13 @@ with col2:
         step=0.1
     )
 
-
-# ============================================================
-# CLOSE GLASS CARD
-# ============================================================
-st.markdown(
-    """
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-
 # ============================================================
 # PREDICTION SECTION
 # ============================================================
+
 st.markdown(
     """
-    <div class="main-container">
+        </div>
 
         <div class="glass-card">
 
@@ -1158,22 +961,21 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# ============================================================
+# PREDICT
+# ============================================================
 
-# ============================================================
-# PREDICT BUTTON
-# ============================================================
 predict_button = st.button(
     "🍷  Predict Wine Quality"
 )
-
 
 if predict_button:
 
     try:
 
-        # ----------------------------------------------------
-        # Maintain exact feature order
-        # ----------------------------------------------------
+        # IMPORTANT:
+        # Keep EXACTLY the same order used during model training.
+
         input_values = [
             fixed_acidity,
             volatile_acidity,
@@ -1188,24 +990,18 @@ if predict_button:
             alcohol
         ]
 
-        # ----------------------------------------------------
-        # Convert to NumPy array
-        # ----------------------------------------------------
+        # Convert to NumPy
         input_array = np.array(
             input_values,
             dtype=float
         ).reshape(1, -1)
 
-        # ----------------------------------------------------
-        # Scale input
-        # ----------------------------------------------------
+        # Scale
         scaled_input = scaler.transform(
             input_array
         )
 
-        # ----------------------------------------------------
         # Predict
-        # ----------------------------------------------------
         prediction = model.predict(
             scaled_input
         )
@@ -1214,9 +1010,7 @@ if predict_button:
             prediction[0]
         )
 
-        # ----------------------------------------------------
         # Display result
-        # ----------------------------------------------------
         st.markdown(
             f"""
             <div class="result-card">
@@ -1247,20 +1041,16 @@ if predict_button:
             unsafe_allow_html=True
         )
 
-    except Exception as e:
+    except Exception as error:
 
-        st.error(
-            "❌ Prediction error"
-        )
+        st.error("❌ Prediction error")
 
-        st.code(
-            str(e)
-        )
-
+        st.code(str(error))
 
 # ============================================================
-# CLOSE PREDICTION CARD
+# INFO CARDS + FOOTER
 # ============================================================
+
 st.markdown(
     """
         </div>
@@ -1283,7 +1073,6 @@ st.markdown(
 
             </div>
 
-
             <div class="info-card">
 
                 <div class="info-icon">
@@ -1299,7 +1088,6 @@ st.markdown(
                 </div>
 
             </div>
-
 
             <div class="info-card">
 
@@ -1319,7 +1107,6 @@ st.markdown(
 
         </div>
 
-
         <div class="footer">
             🍷 Wine Quality AI · Powered by Machine Learning
         </div>
@@ -1328,3 +1115,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+```
