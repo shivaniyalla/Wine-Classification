@@ -27,7 +27,7 @@ def load_artifacts():
 
     # File paths
     model_path = os.path.join(base_dir, "New_RFmodel.pkl")
-    scaler_path = os.path.join(base_dir, "New_Scalar.pkl")
+    scaler_path = os.path.join(base_dir, "New_scalar.pkl")
 
     # ----------------------------------
     # Check model file
@@ -73,7 +73,7 @@ except FileNotFoundError as e:
     st.code(str(e))
 
     st.info(
-        "Make sure New_RFmodel.pkl and New_Scalar.pkl "
+        "Make sure New_RFmodel.pkl and New_scalar.pkl "
         "are uploaded to the same GitHub folder as app.py."
     )
 
