@@ -373,72 +373,72 @@ div[data-testid="stNumberInput"] input:focus {
 }
 
 
-/* ============================================================
-   INFO CARDS
-   ============================================================ */
+# ============================================================
+# INFORMATION CARDS
+# ============================================================
 
-.info-card {
-    min-height: 180px;
+st.write("")
+st.write("")
 
-    padding: 28px 25px;
+col1, col2, col3 = st.columns(3)
 
-    border-radius: 22px;
+with col1:
+    with st.container(border=True):
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(75, 10, 35, 0.52),
-            rgba(20, 5, 12, 0.80)
-        );
+        st.markdown(
+            "<div style='font-size:32px;'>🧪</div>",
+            unsafe_allow_html=True
+        )
 
-    border: 1px solid rgba(190, 55, 100, 0.25);
+        st.markdown(
+            "<h3 style='margin:5px 0;'>Chemical Analysis</h3>",
+            unsafe_allow_html=True
+        )
 
-    box-shadow:
-        0 15px 45px rgba(0,0,0,0.25);
-
-    transition: transform 0.25s ease,
-                border 0.25s ease;
-}
-
-.info-card:hover {
-    transform: translateY(-4px);
-
-    border:
-        1px solid rgba(210, 75, 120, 0.45);
-}
-
-.info-icon {
-    font-size: 30px;
-    margin-bottom: 16px;
-}
-
-.info-title {
-    color: white;
-    font-size: 18px;
-    font-weight: 750;
-    margin-bottom: 8px;
-}
-
-.info-text {
-    color: rgba(255,255,255,0.55);
-    font-size: 14px;
-}
+        st.caption("11 wine characteristics")
 
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
+with col2:
+    with st.container(border=True):
 
-.footer {
-    text-align: center;
+        st.markdown(
+            "<div style='font-size:32px;'>🤖</div>",
+            unsafe_allow_html=True
+        )
 
-    margin-top: 50px;
-    padding: 25px;
+        st.markdown(
+            "<h3 style='margin:5px 0;'>Machine Learning</h3>",
+            unsafe_allow_html=True
+        )
 
-    color: rgba(255,255,255,0.35);
+        st.caption("Random Forest prediction")
 
-    font-size: 13px;
-}
+
+with col3:
+    with st.container(border=True):
+
+        st.markdown(
+            "<div style='font-size:32px;'>⚡</div>",
+            unsafe_allow_html=True
+        )
+
+        st.markdown(
+            "<h3 style='margin:5px 0;'>Instant Results</h3>",
+            unsafe_allow_html=True
+        )
+
+        st.caption("Prediction in seconds")
+
+
+# ============================================================
+# FOOTER
+# ============================================================
+
+st.markdown("""
+<div class="footer">
+    🍷 Wine Quality AI &nbsp;·&nbsp; Powered by Machine Learning
+</div>
+""", unsafe_allow_html=True)
 
 
 /* ============================================================
